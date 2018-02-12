@@ -16,10 +16,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 dependencies {
@@ -29,10 +25,6 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
 
     implementation 'com.rakangsoftware.tiny:tiny:0.0.3'
-
-    // Data Binding
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.3.0-beta1'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.3.0-beta1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
