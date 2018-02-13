@@ -2,6 +2,7 @@ package com.rakangsoftware.databinding;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,6 +26,10 @@ public class MainViewModel extends AndroidViewModel {
         }
     };
 
+    public MutableLiveData<List<User>> items = new MutableLiveData<>();
+
+    public MutableLiveData<User> user = new MutableLiveData<>();
+
     private Executor mExecutor = Executors.newSingleThreadExecutor();
 
     public MainViewModel(Application application) {
@@ -38,8 +43,10 @@ public class MainViewModel extends AndroidViewModel {
                 Gson        gson = new Gson();
                 Type listType = new TypeToken<List<User>>() {
                 }.getType();
-                List<User> userList  = gson.fromJson(rd, listType);
+                List<User> obj = gson.fromJson(rd, listType);
+                items.postValue(obj);
 
+                user.postValue(obj.get(0));
             }
         });
     }
